@@ -19,12 +19,12 @@
 
   ***Be intentional about your time and learning.*** Focus on understanding every line of code that you write, and why you are writing it. The result should be a codebase that is clean, intentional, and ready for production.
 
- To create a new Rails 3.2 application with a postgres database and without the default testing framework, run:
+ To create a new Rails application with a postgres database and without the default testing framework, run:
 
   ```text
-    $ gem install rails --version=3.2.18
+    $ gem install rails
 
-    $ rails _3.2.18_ new dbc_overflow -T -d=postgresql
+    $ rails new dbc_overflow -T -d=postgresql
   ```
 
   You'll need to install rspec-rails, capybara, shoulda-matchers, and factory-girl in your project. Refer to this document on [how to set up a Rails application.](../../../Rails_with_tests)
