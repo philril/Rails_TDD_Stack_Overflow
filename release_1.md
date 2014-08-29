@@ -27,7 +27,25 @@
     $ rails new dbc_overflow -T -d=postgresql
   ```
 
-  You'll need to install rspec-rails, capybara, shoulda-matchers, and factory-girl in your project. Refer to this document on [how to set up a Rails application.](../../../Rails_with_tests)
+  You'll need to install rspec-rails, capybara, shoulda-matchers, and factory-girl in your project.
+
+  In your Gemfile:
+  ```ruby
+    group :development, :test do
+      gem 'rspec-rails'
+      gem 'capybara'
+      gem 'shoulda-matchers'
+      gem 'factory_girl_rails'
+    end
+  ```
+
+  Then install rspec by running `rails g rspec:install`
+
+  In your `rails_helper.rb`, within the `Rspec.configure` block, add `config.include Capybara::DSL`
+
+  Take a look at the documentation for
+[shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) and
+[factorygirl](https://github.com/thoughtbot/factory_girl_rails).
 
 ## Features
 
