@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'question#index'
+
   get 'question/show'
 
   get 'question/index'

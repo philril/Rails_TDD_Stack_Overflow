@@ -5,6 +5,9 @@
     <th>Text</th>
   </tr>
 
+  <p>New Question:</p>
+  <%= render 'form' %>
+
   <% @questions.each do |question| %>
     <tr>
       <td><%= question.title %></td>
