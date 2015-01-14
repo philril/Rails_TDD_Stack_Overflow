@@ -2,12 +2,13 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
-  get 'questions/show'
-
-  get 'questions/index'
-
   resources :questions do
     resources :answers
+
+    member do
+      post :upvote
+      post :downvote
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,6 +5,9 @@
     <li>
       <p><%= link_to question.title, question %></p>
       <p><%= question.content %></p>
+      <p><%= question.votes %></p>
+      <button><%= link_to "Upvote", upvote_question_path(question.id), method: :post %></button>
+      <button><%= link_to "Downvote", downvote_question_path(question.id), method: :post %></button>
     </li>
   <% end %>
 </ul>

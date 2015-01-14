@@ -14,16 +14,36 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
   def update
     @question = Question.find(params[:id])
-    @question.update_attributes(question_params)
-    redirect_to questions_path(@question)
+
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render 'edit'
+    end
+  end
+
+  def upvote
+    @question = Question.find(params[:id])
+    @question.upvote
+    redirect_to root_path
+  end
+
+  def downvote
+    @question = Question.find(params[:id])
+    @question.downvote
+    redirect_to root_path
   end
 
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-  flash[:success] = "Question Deleted"
+    flash[:success] = "Question Deleted"
     redirect_to root_path
   end
 
