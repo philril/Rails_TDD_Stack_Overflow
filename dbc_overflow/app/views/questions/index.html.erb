@@ -3,12 +3,11 @@
 <ul>
   <% @questions.each do |question| %>
     <li>
-      <p><%= question.title %></p>
+      <p><%= link_to question.title, question %></p>
       <p><%= question.content %></p>
     </li>
   <% end %>
 </ul>
-
 
 <p>New Question:</p>
 <%= render 'question_form' %>

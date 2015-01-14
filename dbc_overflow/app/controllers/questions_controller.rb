@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.save
-    redirect_to root_url
+    redirect_to questions_path
   end
 
   def show
@@ -23,7 +23,8 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    redirect_to questions_path
+  flash[:success] = "Question Deleted"
+    redirect_to root_path
   end
 
 private
