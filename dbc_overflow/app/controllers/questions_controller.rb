@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.all.sort_by(&:created_at).reverse
   end
 
   def create
@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
 
 private
   def question_params
-    params.require(:question).permit(:title, :text)
+    params.require(:question).permit(:title, :content, :votes)
   end
 
 end

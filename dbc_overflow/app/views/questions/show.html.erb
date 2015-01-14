@@ -2,11 +2,22 @@
 <p>Find me in app/views/questions/show.html.erb</p>
 
 <h1><%= @question.title %></h1>
-<%= @question.content %><br>
-<%= link_to 'Destroy', question_path(@question),
-  method: :delete,
-  data: { confirm: 'Are you sure?' } %><br>
-<%= link_to 'Edit', edit_question_path(@question) %>
+<p><%= @question.content %></p><br>
+<p><%= @question.votes %> votes</p>
 
-<p>New Answer:</p>
+<%= link_to 'Delete Question', question_path(@question),
+  method: :delete,
+  data: { confirm: 'Are you sure you want to delete this question and all associated answers?' } %><br>
+<%= link_to 'Edit Question', edit_question_path(@question) %>
+
+<h3><%= @question.answers.count %> Answers:</h3>
+<p><% @question.answers.each do |answer| %></p>
+  <ul>
+    <li><h4><%= answer.title %></h4>
+      <p><%= answer.content %></p>
+    </li>
+  </ul>
+<% end %>
+
+<h3>New Answer:</h3>
 <%= render 'answer_form' %>

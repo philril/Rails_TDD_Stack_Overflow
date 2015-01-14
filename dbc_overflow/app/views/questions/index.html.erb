@@ -3,9 +3,9 @@
 <ul>
   <% @questions.each do |question| %>
     <li>
-      <p><%= link_to question.title, question %></p>
+      <h2><%= link_to question.title, question %></h2>
       <p><%= question.content %></p>
-      <p><%= question.votes %></p>
+      <h4><%= question.answers.count %> Answers, <%= question.votes %> votes</h4>
       <button><%= link_to "Upvote", upvote_question_path(question.id), method: :post %></button>
       <button><%= link_to "Downvote", downvote_question_path(question.id), method: :post %></button>
     </li>
