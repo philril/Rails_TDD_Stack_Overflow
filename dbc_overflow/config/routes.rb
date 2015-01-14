@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'question#index'
+  root 'questions#index'
 
-  get 'question/show'
+  get 'questions/show'
 
-  get 'question/index'
+  get 'questions/index'
 
-  resources :question do
+  resources :questions do
     resources :answers
   end
 
