@@ -1,7 +1,28 @@
+require 'httparty'
+require 'json'
+
 class QuestionsController < ApplicationController
+  # include HTTParty
 
   def index
     @questions = Question.all.sort_by(&:created_at).reverse
+    quote = HTTParty.get("https://api.github.com/zen",
+      headers: {"User-Agent" => "philril", "token" => ENV['GITHUB_API']}
+    )
+
+    canned_response = [
+      "Shitty quote",
+      "Some stuff",
+      "Some other stuff",
+      "Blah blah blah"
+    ]
+
+    if quote.headers['status'] == nil
+      @quote = "'#{canned_response.shuffle.pop}'"
+    else
+      @quote = "'#{quote.body}'"
+    end
+
   end
 
   def create

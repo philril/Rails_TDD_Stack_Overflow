@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-  describe "Answer Feature" do
+  describe "Answer Feature Test" do
 
     context "save answer" do
       it "should save the answer" do
@@ -14,5 +14,12 @@ require 'rails_helper'
         expect(page).to have_content(@answer.title)
       end
     end
+
+    # describe "API Test" do
+
+    # context "generate quote" do
+    #   it "displays a randomly generated quote" do
+    #    end
+    # end
 
   end

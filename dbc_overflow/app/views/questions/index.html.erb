@@ -1,5 +1,8 @@
 <h1>Questions#index</h1>
 
+<h3>Quote of the day:</h3>
+<h4><%= @quote %></h4>
+
 <ul>
   <% @questions.each do |question| %>
     <li>
@@ -14,5 +17,3 @@
 
 <p>New Question:</p>
 <%= render 'question_form' %>
-
-<%= link_to 'Phil', "/phil" %>
