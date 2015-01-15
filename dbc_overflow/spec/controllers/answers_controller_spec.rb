@@ -1,8 +1,9 @@
 require 'rails_helper'
+require 'capybara/rspec'
 
 RSpec.describe AnswersController, :type => :controller do
 
-describe "fields" do
+  describe "fields" do
     let(:answer_params) { attributes_for(:answer) }
 
     before :each do
@@ -24,26 +25,7 @@ describe "fields" do
     # end
   end
 
-  describe "votes" do
 
-    let(:answer_params) { attributes_for(:answer) }
 
-    context "#upvote" do
-      it "should increase the vote count by 1" do
-        @question = create(:question)
-        @answer = create(:answer)
-            post :create, question_id: @question.id , :answer => answer_params
-
-        num = @answer.votes
-        post :upvote, id: @answer.id
-        @answer.reload
-        expect(@answer.votes).to eq(num + 1)
-      end
-    end
-
-    context "#downvote" do
-
-    end
-  end
 
 end
