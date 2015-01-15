@@ -15,6 +15,9 @@
   <ul>
     <li><h4><%= answer.title %></h4>
       <p><%= answer.content %></p>
+      <p><%= answer.votes %> Votes</p>
+      <button><%= link_to "Upvote", upvote_question_answer_path(answer.question, answer), method: :post %></button>
+      <button><%= link_to "Downvote", downvote_question_answer_path(answer.question, answer), method: :post %></button>
     </li>
   </ul>
 <% end %>

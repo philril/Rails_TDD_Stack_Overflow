@@ -6,9 +6,7 @@ describe "fields" do
     let(:answer_params) { attributes_for(:answer) }
 
     before :each do
-    @question = create(:question)
-    @answer = create(:answer)
-        post :create, question_id: @question.id , :answer => answer_params
+      @answer = create(:answer)
     end
 
     it "has a title field" do
@@ -19,28 +17,28 @@ describe "fields" do
       expect(@answer.content).to eq("Here is the answer")
     end
 
-    it "is associated with a question" do
-      expect(@question.answers.first.question_id).to eq(@question.id)
-    end
+    # it "is associated with a question" do
+    #   @answer = build(:answer)
+    #   post :create, question_id: 7, :answer => answer_params
+    #   expect(@answer.question_id).to eq(7)
+    # end
   end
-
 
   describe "votes" do
 
     let(:answer_params) { attributes_for(:answer) }
 
-    before :each do
-      @question = create(:question)
-      @answer = create(:answer)
-          post :create, question_id: @question.id , :answer => answer_params
-    end
-
     context "#upvote" do
-      @answer = create(:answer)
-      num = @answer.votes
-      post :upvote, id: @answer.id
-      @answer.reload
-      expect(@answer.votes).to eq(num + 1)
+      it "should increase the vote count by 1" do
+        @question = create(:question)
+        @answer = create(:answer)
+            post :create, question_id: @question.id , :answer => answer_params
+
+        num = @answer.votes
+        post :upvote, id: @answer.id
+        @answer.reload
+        expect(@answer.votes).to eq(num + 1)
+      end
     end
 
     context "#downvote" do
