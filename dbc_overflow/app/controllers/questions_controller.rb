@@ -7,17 +7,17 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all.sort_by(&:created_at).reverse
     quote = HTTParty.get("https://api.github.com/zen",
-      headers: {"User-Agent" => "philril", "token" => ENV['GITHUB_API']}
+      headers: {"User-Agent" => "philril", "access_token" => ENV['GITHUB_API']},
     )
 
     canned_response = [
       "Shitty quote",
-      "Some stuff",
-      "Some other stuff",
+      "Some quote stuff",
+      "Some super inspirational quote stuff",
       "Blah blah blah"
     ]
 
-    if quote.headers['status'] == nil
+    if quote.headers['status'] == "403 Forbidden"
       @quote = "'#{canned_response.shuffle.pop}'"
     else
       @quote = "'#{quote.body}'"
@@ -27,6 +27,18 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+
+    respond_to do |format|
+      if @question.save
+        format.html {redirect_to @question}
+        format.js {}
+        format.json {render json: @question, status :created, location: @question}
+      else
+        format.html {render action: "new"}
+        format.json {render json @question.errors}
+      end
+      end
+
     @question.save
     redirect_to questions_path
   end

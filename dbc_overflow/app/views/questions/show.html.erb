@@ -6,6 +6,8 @@
   data: { confirm: 'Are you sure you want to delete this question and all associated answers?' } %>
 <%= button_to 'Edit Question', edit_question_path(@question) %>
 
+
+
 <h1><%= @question.title %></h1>
 <p><%= @question.content %></p><br>
 <p><%= @question.votes %> votes</p>
@@ -21,6 +23,8 @@
     </li>
   </ul>
 <% end %>
+
+
 
 <h3>New Answer:</h3>
 <%= render 'answer_form' %>

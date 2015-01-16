@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+// $(function (){
+//   $("form[data-remote=true").on("ajax:success", function(xhr){
+//     $('ul').append(xhr.responseText)
+//     console.log(xhr)
+//   })
+// })
