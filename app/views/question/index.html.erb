@@ -1,0 +1,17 @@
+<h1>Question#index</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <p>New Question:</p>
+  <%= render 'form' %>
+
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.title %></td>
+      <td><%= question.content %></td>
+    </tr>
+  <% end %>
+</table>
