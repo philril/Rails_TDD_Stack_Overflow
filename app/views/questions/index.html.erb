@@ -1,0 +1,19 @@
+<h1>Questions#index</h1>
+
+<h3>Quote of the day:</h3>
+<h4><%= @quote %></h4>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <h2><%= link_to question.title, question %></h2>
+      <p><%= question.content %></p>
+      <h4><%= question.answers.count %> Answers, <%= question.votes %> votes</h4>
+      <button><%= link_to "Upvote", upvote_question_path(question.id), method: :post %></button>
+      <button><%= link_to "Downvote", downvote_question_path(question.id), method: :post %></button>
+    </li>
+  <% end %>
+</ul>
+
+<p>New Question:</p>
+<%= render 'question_form' %>
